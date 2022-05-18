@@ -1,21 +1,23 @@
-import java.util.Arrays;
-
 public class HW9 {
     //1.
     public static String oddEven(long a) {
         if (a >= Integer.MIN_VALUE && a <= Integer.MAX_VALUE) {
             if (a % 2 == 0) {
+
                 return "Even";
             } else {
+
                 return "Odd";
             }
         }
+
         return "Undefined";
     }
 
     //2.
     public static int[] OddIndices(int[] array) {
         if (array.length == 0) {
+
             return new int[]{};
         }
 
@@ -27,12 +29,14 @@ public class HW9 {
                 k++;
             }
         }
+
         return oddArr;
     }
 
     //3.
     public int sumArrary(int[] array) {
         if (array.length == 0) {
+
             return 0;
         }
 
@@ -40,14 +44,17 @@ public class HW9 {
         for (int i = 0; i < array.length; i++) {
             sum += array[i];
         }
+
         return sum;
     }
 
     //4
-    public int BiggerValue(int a, int b) {
+    public int biggerValue(int a, int b) {
         if (a > b) {
+
             return a;
         } else {
+
             return b;
         }
     }
@@ -58,7 +65,7 @@ public class HW9 {
     }
 
     //6,
-    public int AreNumbersEqual (int a, int b){
+    public int areNumbersEqual(int a, int b){
         if (a > b){
 
             return 1;
@@ -107,7 +114,7 @@ public class HW9 {
     }
 
     //9.
-    public int[] Intersection (int[] arr1, int[]arr2){
+    public int[] intersection(int[] arr1, int[]arr2){
         if (arr1.length < arr2.length){
             return new int[]{};
         }
@@ -133,7 +140,7 @@ public class HW9 {
     }
 
     //10.!!!!!
-    public int[] PeakElement(int[] arr){
+    public int[] peakElement(int[] arr){
         int k = 0;
         for (int i = 0; i < arr.length; i++) {
             if(i == 0 && arr[0] > arr[1]){
@@ -144,6 +151,11 @@ public class HW9 {
                 k++;
             }
         }
+
+        if (k == 0){
+            return new int[]{};
+        }
+
         int[] newArr = new int[k];
         int n = 0;
         for (int i = 0; i < arr.length; i++) {
@@ -157,6 +169,7 @@ public class HW9 {
                 newArr[n] = arr[arr.length - 1];
             }
         }
+
         return newArr;
     }
 

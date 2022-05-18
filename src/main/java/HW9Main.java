@@ -10,14 +10,14 @@ public class HW9Main {
         Utils.task(3);
         System.out.println(a.sumArrary(new int[]{-7, -3}));//метод БЕЗ static
         Utils.task(4);
-        System.out.println(a.BiggerValue(3333,9999));
+        System.out.println(a.biggerValue(3333,9999));
         Utils.task(5);
         System.out.println(a.IsPositiveNumber(-55));
         Utils.task(8);
         System.out.println(Arrays.toString(a.minMaxAve(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 2, 6)));
         Utils.task(9);
-        System.out.println(Arrays.toString(a.Intersection(new int[]{1, 2, 4, 5, 8, 9}, new int[]{8, 9, 45})));
+        System.out.println(Arrays.toString(a.intersection(new int[]{1, 2, 4, 5, 8, 9}, new int[]{8, 9, 45})));
         Utils.task(10);
-        System.out.println(Arrays.toString(a.PeakElement(new int[]{3, 2, 7, 5, 1, 9, 23, 1})));
+        System.out.println(Arrays.toString(a.peakElement(new int[]{3, 2, 7, 5, 1, 9, 23, 1})));
     }
 }
