@@ -11,7 +11,7 @@ public class Utils {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
     public static void task(double a){
-        System.out.println("_".repeat(30) + a + "_".repeat(30));
+        System.out.println(ANSI_GREEN + "_".repeat(30) + a + "_".repeat(30) + ANSI_RESET);
     }
     public static void line(){
         System.out.println("_".repeat(70));
