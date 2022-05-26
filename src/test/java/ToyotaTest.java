@@ -24,7 +24,7 @@ public class ToyotaTest extends BaseTest {
         goButton.click();
 
         WebElement toyotaButton = getDriver().findElement(
-                By.xpath("//a[@class='logo']"));    //"//*[@id='tcom-header']/div[2]/nav/ul/li[1]/a[1]"));
+                By.className("logo"));  //By.xpath("//a[@class='logo']"));    //"//*[@id='tcom-header']/div[2]/nav/ul/li[1]/a[1]"));
         toyotaButton.click();
 
         String expectedExploreAllVehicles = getDriver()
