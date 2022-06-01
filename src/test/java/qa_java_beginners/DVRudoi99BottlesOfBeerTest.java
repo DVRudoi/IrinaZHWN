@@ -6,6 +6,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import runner.BaseTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DVRudoi99BottlesOfBeerTest extends BaseTest {
     public WebElement searchLetter(String a) {
         return getDriver().findElement(
@@ -288,5 +291,23 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
+    @Test
+    public void testExperiment() throws InterruptedException {
+        String expectedResult = "Java (object-oriented version)";
 
+        getDriver().get(URL);
+
+        getDriver().findElement(By.linkText("Search Languages")).click();
+        getDriver().findElement(By.name("search")).sendKeys("Java");
+        getDriver().findElement(By.name("submitsearch")).click();
+//        Thread.sleep(3000);
+
+        List<WebElement> string = getDriver().findElements(By.xpath("//table[@id='category']/tbody/tr"));
+        List<String> listJava = new ArrayList<>();
+        for (WebElement str : string) {
+            if (str.getText().toLowerCase().contains("java ("))
+                listJava.add(str.getText());
+        }
+        System.out.println(listJava);
+    }
 }
