@@ -45,7 +45,7 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
                 By.xpath("//li/a[@href = '/abc.html']"));
         buttonBrowseLanguages.click();
 
-        WebElement buttonLetterM =  searchLetter("m");
+        WebElement buttonLetterM = searchLetter("m");
         buttonLetterM.click();
 
         String actualText = getDriver()
@@ -191,7 +191,7 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
 
         getDriver().findElement(By.linkText("Top Lists")).click();
         String positionTopRated = getDriver().findElement(
-                By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
+                        By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
                 .getText()
                 .replace(".", "");
         int rang1 = Integer.parseInt(positionTopRated);
@@ -201,7 +201,7 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
 
         getDriver().findElement(By.linkText("Top Rated Esoteric")).click();
         String positionEsotericLanguages = getDriver().findElement(
-                By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
+                        By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
                 .getText()
                 .replace(".", "");
         int rang2 = Integer.parseInt(positionEsotericLanguages);
@@ -211,7 +211,7 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
 
         getDriver().findElement(By.linkText("Top Hits")).click();
         String positionTopHits = getDriver().findElement(
-                By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
+                        By.xpath("//a[@href='language-shakespeare-664.html']/ancestor::tr/td[1]"))
                 .getText()
                 .replace(".", "");
         int rang = Integer.parseInt(positionTopHits);
@@ -278,7 +278,7 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
                     || getDriver().findElement(
                     By.xpath("//tr[" + index + "]/td[1]")).getText().equals("Java")) {
                 if (numberOfComments < Integer.parseInt(getDriver().findElement(
-                        By.xpath("//tr[" + index + "]/td[4]")).getText())){
+                        By.xpath("//tr[" + index + "]/td[4]")).getText())) {
                     numberOfComments = Integer.parseInt(getDriver().findElement(
                             By.xpath("//tr[" + index + "]/td[4]")).getText());
                     actualResult = getDriver().findElement(
@@ -293,21 +293,32 @@ public class DVRudoi99BottlesOfBeerTest extends BaseTest {
 
     @Test
     public void testExperiment() throws InterruptedException {
-        String expectedResult = "Java (object-oriented version)";
-
+        StringBuilder expectedResult = new StringBuilder();
+        expectedResult.append("Java")
+                .append(" (")
+                .append("object-oriented")
+                .append(" ")
+                .append("version)");
         getDriver().get(URL);
 
         getDriver().findElement(By.linkText("Search Languages")).click();
         getDriver().findElement(By.name("search")).sendKeys("Java");
         getDriver().findElement(By.name("submitsearch")).click();
-//        Thread.sleep(3000);
 
-        List<WebElement> string = getDriver().findElements(By.xpath("//table[@id='category']/tbody/tr"));
-        List<String> listJava = new ArrayList<>();
+        List<WebElement> string = getDriver().findElements(
+                By.xpath("//table[@id='category']/tbody/tr/td[1]"));
+        List<String> actualResult = new ArrayList<>();
+
         for (WebElement str : string) {
-            if (str.getText().toLowerCase().contains("java ("))
-                listJava.add(str.getText());
+            if (str.getText().toLowerCase().contains("java (object-oriented version)")) {
+                actualResult.add(str.getText());
+                System.out.println(actualResult);
+//                System.out.println(string.indexOf(str));// 27. 1:19:47
+            }
         }
-        System.out.println(listJava);
+
+        Assert.assertEquals(actualResult.size(), 1);
+        Assert.assertFalse(actualResult.get(0).isEmpty());  //get() т.к. создан объект ArrayList, проверяем что строка не пустая
+        Assert.assertEquals(actualResult.get(0), expectedResult.toString());
     }
 }
